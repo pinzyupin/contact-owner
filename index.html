@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="id">
 <head>
   <meta charset="utf-8" />
@@ -15,91 +14,91 @@
       --muted: #a9b3c7;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:'Inter', system-ui, sans-serif;color:var(--text);overflow:hidden;}body{
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  position:relative;
-}
+    html,body{height:100%;font-family:'Inter', system-ui, sans-serif;color:var(--text);overflow:hidden;}
+    body{
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      position:relative;
+    }
 
-/* glitch animation effect */
-body::before, body::after{
-  content:"";
-  position:absolute;
-  top:0;left:0;right:0;bottom:0;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  mix-blend-mode:screen;
-  animation:glitchMove 4s infinite ease-in-out alternate;
-  opacity:0.07;
-  pointer-events:none;
-}
-body::after{
-  background:repeating-linear-gradient(0deg,rgba(124,58,237,0.08) 0,rgba(124,58,237,0.08) 2px,transparent 3px,transparent 6px);
-  mix-blend-mode:overlay;
-  animation:glitchShift 3s infinite linear alternate;
-}
+    body::before, body::after{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;bottom:0;
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      mix-blend-mode:screen;
+      animation:glitchMove 4s infinite ease-in-out alternate;
+      opacity:0.07;
+      pointer-events:none;
+    }
 
-@keyframes glitchMove{
-  0%{transform:translate(0,0)}
-  20%{transform:translate(-5px,3px)}
-  40%{transform:translate(3px,-5px)}
-  60%{transform:translate(-2px,2px)}
-  80%{transform:translate(4px,-3px)}
-  100%{transform:translate(0,0)}
-}
+    body::after{
+      background:repeating-linear-gradient(0deg,rgba(124,58,237,0.08) 0,rgba(124,58,237,0.08) 2px,transparent 3px,transparent 6px);
+      mix-blend-mode:overlay;
+      animation:glitchShift 3s infinite linear alternate;
+    }
 
-@keyframes glitchShift{
-  0%{transform:translateY(0)}
-  25%{transform:translateY(-3px)}
-  50%{transform:translateY(2px)}
-  75%{transform:translateY(-1px)}
-  100%{transform:translateY(0)}
-}
+    @keyframes glitchMove{
+      0%{transform:translate(0,0)}
+      20%{transform:translate(-5px,3px)}
+      40%{transform:translate(3px,-5px)}
+      60%{transform:translate(-2px,2px)}
+      80%{transform:translate(4px,-3px)}
+      100%{transform:translate(0,0)}
+    }
 
-.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3rem 1rem;flex-direction:column;position:relative;z-index:2;}
+    @keyframes glitchShift{
+      0%{transform:translateY(0)}
+      25%{transform:translateY(-3px)}
+      50%{transform:translateY(2px)}
+      75%{transform:translateY(-1px)}
+      100%{transform:translateY(0)}
+    }
 
-.card{width:100%;max-width:960px;background:rgba(255,255,255,0.03);border-radius:18px;padding:32px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;gap:28px;align-items:center;backdrop-filter:blur(6px) saturate(120%);border:1px solid rgba(255,255,255,0.04)}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3rem 1rem;flex-direction:column;position:relative;z-index:2;}
 
-.brand{width:160px;height:160px;flex:0 0 160px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px}
-.brand img{max-width:100%;height:auto;display:block;border-radius:8px}
+    .card{width:100%;max-width:960px;background:rgba(255,255,255,0.03);border-radius:18px;padding:32px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;gap:28px;align-items:center;backdrop-filter:blur(6px) saturate(120%);border:1px solid rgba(255,255,255,0.04)}
 
-.content{flex:1}
-.eyebrow{
-  display:inline-block;
-  font-family:'Poppins',sans-serif;
-  font-weight:700;
-  font-size:32px;
-  color:var(--accent);
-  margin-bottom:16px;
-  letter-spacing:1px;
-  text-shadow:0 0 8px rgba(124,58,237,0.4);
-}
+    .brand{width:160px;height:160px;flex:0 0 160px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px}
+    .brand img{max-width:100%;height:auto;display:block;border-radius:8px}
 
-h1{margin:0 0 12px 0;font-size:22px;line-height:1.15}
-p.lead{margin:0 0 18px 0;color:var(--muted);font-size:15px}
+    .content{flex:1}
+    .eyebrow{
+      display:inline-block;
+      font-family:'Poppins',sans-serif;
+      font-weight:700;
+      font-size:32px;
+      color:var(--accent);
+      margin-bottom:16px;
+      letter-spacing:1px;
+      text-shadow:0 0 8px rgba(124,58,237,0.4);
+    }
 
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;background:transparent;color:var(--text);transition:all .18s ease;box-shadow:0 3px 10px rgba(2,6,23,0.45)}
-.btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;box-shadow:0 8px 30px rgba(79,70,229,0.18),inset 0 -2px 0 rgba(0,0,0,0.08)}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-.btn:hover{transform:translateY(-3px)}
-.btn:active{transform:translateY(-1px)}
+    h1{margin:0 0 12px 0;font-size:22px;line-height:1.15}
+    p.lead{margin:0 0 18px 0;color:var(--muted);font-size:15px}
 
-footer{
-  margin-top:40px;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-  letter-spacing:0.5px;
-  font-family:'Poppins',sans-serif;
-}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;background:transparent;color:var(--text);transition:all .18s ease;box-shadow:0 3px 10px rgba(2,6,23,0.45)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;box-shadow:0 8px 30px rgba(79,70,229,0.18),inset 0 -2px 0 rgba(0,0,0,0.08)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+    .btn:hover{transform:translateY(-3px)}
+    .btn:active{transform:translateY(-1px)}
 
-@media (max-width:720px){
-  .card{flex-direction:column;align-items:center;text-align:center;padding:22px}
-  .brand{width:120px;height:120px;flex:0 0 120px}
-  .eyebrow{font-size:26px}
-  h1{font-size:18px}
-  .actions{justify-content:center}
-}
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      letter-spacing:0.5px;
+      font-family:'Poppins',sans-serif;
+    }
 
+    @media (max-width:720px){
+      .card{flex-direction:column;align-items:center;text-align:center;padding:22px}
+      .brand{width:120px;height:120px;flex:0 0 120px}
+      .eyebrow{font-size:26px}
+      h1{font-size:18px}
+      .actions{justify-content:center}
+    }
   </style>
 </head>
 <body>
@@ -107,20 +106,16 @@ footer{
     <div class="card" role="region" aria-label="Header profil Pinzyu Official">
       <div class="brand">
         <img src="https://files.catbox.moe/ntcjt3.png" alt="Logo Pinzyu Official">
-      </div><div class="content">
-    <span class="eyebrow">Pinzyu Official</span>
-    <h1>Selamat Datang Di Website Profil Saya</h1>
-    <p class="lead">Perkenalkan Saya <strong>Pinzyu Official</strong></p>
+      </div>
+      <div class="content">
+        <span class="eyebrow">Pinzyu Official</span>
+        <h1>Selamat Datang Di Website Profil Saya</h1>
+        <p class="lead">Perkenalkan Saya <strong>Pinzyu Official</strong></p>
 
-    <div class="actions">
-      <a class="btn primary" href="https://wa.me/6282325648258" target="_blank" rel="noopener noreferrer">Contact Owner</a>
-      <a class="btn ghost" href="https://allpay-pinzyu.vercel.app/" target="_blank" rel="noopener noreferrer">Lanjut Ke Payment</a>
-    </div>
-  </div>
+        <div class="actions">
+  <a class="btn primary" href="https://wa.me/6282325648258" target="_blank">Contact Owner</a>
+  <a class="btn ghost" href="https://allpay-pinzyu.vercel.app/" target="_blank">Lanjut Ke Payment</a>
+  <a class="btn ghost" href="https://list-market-pinzyu.vercel.app/" target="_blank">List Produk</a>
 </div>
 
-<footer>© 𝐏𝐈𝐍𝐙𝐘𝐔 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋</footer>
-
-  </div>
-</body>
-  </html>
+    <footer>© 𝐏𝐈𝐍𝐙𝐘𝐔 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋</footer>

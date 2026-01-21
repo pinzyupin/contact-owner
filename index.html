@@ -50,18 +50,14 @@ header {
     overflow: hidden;
     border: 2px solid rgba(180,100,255,.7);
     box-shadow: 0 0 60px rgba(180,100,255,1);
-    transition: .4s;
 }
 
-.video-container:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 90px rgba(200,120,255,1);
-}
-
+/* VIDEO */
 video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    pointer-events: none; /* benar-benar non-interaktif */
 }
 
 /* CONTENT */
@@ -70,7 +66,7 @@ video {
     padding: 60px 20px;
 }
 
-/* TYPING TEXT */
+/* TYPING */
 .typing {
     font-size: 2rem;
     color: #f5e9ff;
@@ -94,7 +90,6 @@ video {
 .subtext {
     margin-top: 18px;
     opacity: .85;
-    font-size: 1rem;
 }
 
 /* BUTTON */
@@ -141,7 +136,7 @@ footer {
 
 <header>
     <div class="video-container">
-        <video autoplay muted loop controls playsinline>
+        <video id="bgVideo" autoplay loop playsinline>
             <source src="https://files.catbox.moe/f34c4i.mp4" type="video/mp4">
         </video>
     </div>
@@ -153,7 +148,7 @@ footer {
     </div>
 
     <div class="subtext">
-      ⓘ klik tombol dibawah untuk menghubungi
+        ada keperluan / kepentingan bisa click tombol dibawah
     </div>
 
     <a href="https://t.me/pinzyvillain" target="_blank" class="btn-telegram">
@@ -162,22 +157,28 @@ footer {
 </div>
 
 <footer>
-    𝐂𝐎𝐏𝐘𝐑𝐈𝐆𝐇𝐓 𝐏𝐈𝐍𝐙𝐘𝐔 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋
+    Copyright Pinzyu Official
 </footer>
 
 </div>
 
 <script>
-/* TYPING ANIMATION */
-const text = "Selamat datang di website pribadi gw, ada keperluan / kepentingan bisa hubungi contact yang tersedia.";
-let index = 0;
-const speed = 80;
+/* FORCE AUTOPLAY + SOUND AFTER USER INTERACTION */
+const video = document.getElementById("bgVideo");
+video.muted = false;
 
+document.addEventListener("click", () => {
+    video.play();
+}, { once: true });
+
+/* TYPING EFFECT */
+const text = "Selamat datang di website pribadi gw, ada keperluan / kepentingan bisa hubungi contact yang tersedia";
+let i = 0;
 function typeEffect() {
-    if (index < text.length) {
-        document.getElementById("typed-text").textContent += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, speed);
+    if (i < text.length) {
+        document.getElementById("typed-text").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
     }
 }
 typeEffect();

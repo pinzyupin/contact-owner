@@ -1,121 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pinzyu Official — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg1: #0f172a;
-      --bg2: #071032;
-      --accent: #7c3aed;
-      --text: #e6eef8;
-      --muted: #a9b3c7;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:'Inter', system-ui, sans-serif;color:var(--text);overflow:hidden;}
-    body{
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
-      position:relative;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinzyu Official</title>
 
-    body::before, body::after{
-      content:"";
-      position:absolute;
-      top:0;left:0;right:0;bottom:0;
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
-      mix-blend-mode:screen;
-      animation:glitchMove 4s infinite ease-in-out alternate;
-      opacity:0.07;
-      pointer-events:none;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    body::after{
-      background:repeating-linear-gradient(0deg,rgba(124,58,237,0.08) 0,rgba(124,58,237,0.08) 2px,transparent 3px,transparent 6px);
-      mix-blend-mode:overlay;
-      animation:glitchShift 3s infinite linear alternate;
-    }
+body {
+    background: url("https://files.catbox.moe/xbna8q.jpeg") center / cover fixed;
+    color: #fff;
+    overflow-x: hidden;
+}
 
-    @keyframes glitchMove{
-      0%{transform:translate(0,0)}
-      20%{transform:translate(-5px,3px)}
-      40%{transform:translate(3px,-5px)}
-      60%{transform:translate(-2px,2px)}
-      80%{transform:translate(4px,-3px)}
-      100%{transform:translate(0,0)}
-    }
+/* PARTICLE */
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
 
-    @keyframes glitchShift{
-      0%{transform:translateY(0)}
-      25%{transform:translateY(-3px)}
-      50%{transform:translateY(2px)}
-      75%{transform:translateY(-1px)}
-      100%{transform:translateY(0)}
-    }
+/* OVERLAY */
+.page-overlay {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(140,0,255,.3), rgba(5,0,15,.95));
+    backdrop-filter: blur(3px);
+}
 
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3rem 1rem;flex-direction:column;position:relative;z-index:2;}
+/* HEADER */
+header {
+    padding: 40px 15px;
+    display: flex;
+    justify-content: center;
+}
 
-    .card{width:100%;max-width:960px;background:rgba(255,255,255,0.03);border-radius:18px;padding:32px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;gap:28px;align-items:center;backdrop-filter:blur(6px) saturate(120%);border:1px solid rgba(255,255,255,0.04)}
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(180,100,255,.7);
+    box-shadow: 0 0 60px rgba(180,100,255,1);
+    transition: .4s;
+}
 
-    .brand{width:160px;height:160px;flex:0 0 160px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px}
-    .brand img{max-width:100%;height:auto;display:block;border-radius:8px}
+.video-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 90px rgba(200,120,255,1);
+}
 
-    .content{flex:1}
-    .eyebrow{
-      display:inline-block;
-      font-family:'Poppins',sans-serif;
-      font-weight:700;
-      font-size:32px;
-      color:var(--accent);
-      margin-bottom:16px;
-      letter-spacing:1px;
-      text-shadow:0 0 8px rgba(124,58,237,0.4);
-    }
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    h1{margin:0 0 12px 0;font-size:22px;line-height:1.15}
-    p.lead{margin:0 0 18px 0;color:var(--muted);font-size:15px}
+/* CONTENT */
+.content {
+    text-align: center;
+    padding: 60px 20px;
+}
 
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;background:transparent;color:var(--text);transition:all .18s ease;box-shadow:0 3px 10px rgba(2,6,23,0.45)}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;box-shadow:0 8px 30px rgba(79,70,229,0.18),inset 0 -2px 0 rgba(0,0,0,0.08)}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-    .btn:hover{transform:translateY(-3px)}
-    .btn:active{transform:translateY(-1px)}
+/* TYPING TEXT */
+.typing {
+    font-size: 2rem;
+    color: #f5e9ff;
+    text-shadow: 0 0 20px rgba(180,100,255,.9);
+    min-height: 2.5em;
+}
 
-    footer{
-      margin-top:40px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      letter-spacing:0.5px;
-      font-family:'Poppins',sans-serif;
-    }
+.cursor {
+    display: inline-block;
+    margin-left: 5px;
+    width: 2px;
+    height: 1.2em;
+    background: #c084fc;
+    animation: blink 1s infinite;
+}
 
-    @media (max-width:720px){
-      .card{flex-direction:column;align-items:center;text-align:center;padding:22px}
-      .brand{width:120px;height:120px;flex:0 0 120px}
-      .eyebrow{font-size:26px}
-      h1{font-size:18px}
-      .actions{justify-content:center}
-    }
-  </style>
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.subtext {
+    margin-top: 18px;
+    opacity: .85;
+    font-size: 1rem;
+}
+
+/* BUTTON */
+.btn-telegram {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 45px;
+    background: linear-gradient(135deg, #a855f7, #6d28d9);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 35px rgba(180,100,255,1);
+    transition: .3s;
+}
+
+.btn-telegram:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 70px rgba(200,120,255,1);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: .9rem;
+    color: #d6b6ff;
+    background: rgba(20,0,40,.85);
+    border-top: 1px solid rgba(180,100,255,.4);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .typing { font-size: 1.4rem; }
+}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="region" aria-label="Header profil Pinzyu Official">
-      <div class="brand">
-        <img src="https://files.catbox.moe/ntcjt3.png" alt="Logo Pinzyu Official">
-      </div>
-      <div class="content">
-        <span class="eyebrow">Pinzyu Official</span>
-        <h1>Selamat Datang Di Website Profil Saya</h1>
-        <p class="lead">Perkenalkan Saya <strong>Pinzyu Official</strong></p>
 
-        <div class="actions">
-  <a class="btn primary" href="https://wa.me/6282325648258" target="_blank">Contact Owner</a>
-  <a class="btn ghost" href="https://allpay-pinzyu.vercel.app/" target="_blank">Lanjut Ke Payment</a>
-  <a class="btn ghost" href="https://list-market-pinzyu.vercel.app/" target="_blank">List Produk</a>
+<canvas id="particles"></canvas>
+
+<div class="page-overlay">
+
+<header>
+    <div class="video-container">
+        <video autoplay muted loop controls playsinline>
+            <source src="https://files.catbox.moe/f34c4i.mp4" type="video/mp4">
+        </video>
+    </div>
+</header>
+
+<div class="content">
+    <div class="typing">
+        <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+
+    <div class="subtext">
+      ⓘ klik tombol dibawah untuk menghubungi
+    </div>
+
+    <a href="https://t.me/pinzyvillain" target="_blank" class="btn-telegram">
+        Contact Telegram
+    </a>
 </div>
 
-    <footer>© 𝐏𝐈𝐍𝐙𝐘𝐔 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋</footer>
+<footer>
+    𝐂𝐎𝐏𝐘𝐑𝐈𝐆𝐇𝐓 𝐏𝐈𝐍𝐙𝐘𝐔 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋
+</footer>
+
+</div>
+
+<script>
+/* TYPING ANIMATION */
+const text = "Selamat datang di website pribadi gw, ada keperluan / kepentingan bisa hubungi contact yang tersedia.";
+let index = 0;
+const speed = 80;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typed-text").textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, speed);
+    }
+}
+typeEffect();
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+for (let i = 0; i < 120; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        dx: (Math.random() - .5) * .6,
+        dy: (Math.random() - .5) * .6
+    });
+}
+
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "rgba(200,120,255,.8)";
+    particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.onresize = () => {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+};
+</script>
+
+</body>
+</html>
